@@ -62,6 +62,10 @@ var possibilita = max - 16;
 
 for(var i = 0; i < possibilita; i++){
   var userNumber = Number(prompt("insert a number from 1 to " + max));
+  if(userNumber > max){
+    alert("Game Over, hai inserito un numero non valido! Premi OK e riavvia il gioco");
+    break;
+  }
   while(inArray(numbersUser,userNumber)){
     alert("Hai già usato questo numero! Non puoi usare lo stesso numero più volte. Premi OK e riprova");
     userNumber = Number(prompt("insert a number from 1 to " + max));
