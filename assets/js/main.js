@@ -40,14 +40,14 @@ var possibilita = 100-16;
 
 for(var i = 0; i < possibilita; i++){
   var userNumber = Number(prompt("insert a number from 1 to 100"));
+  while(inArray(numbersUser,userNumber)){
+    alert("Hai già usato questo numero! Non puoi usare lo stesso numero più volte. Premi OK e riprova");
+    userNumber = Number(prompt("insert a number from 1 to 100"));
+  }
   if(inArray(numbersPc, userNumber)){
     console.log("Bomba Game Over");
     alert("Game Over, il tuo punteggio è: " + numbersUser.length );
     break;
-  }
-  while(inArray(numbersUser,userNumber)){
-    alert("Hai già usato questo numero! Non puoi usare lo stesso numero più volte. Premi OK e riprova");
-    userNumber = Number(prompt("insert a number from 1 to 100"));
   }
   numbersUser.push(userNumber);
 }
