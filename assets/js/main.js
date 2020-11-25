@@ -10,26 +10,26 @@ function getRandomNumber(min, max){
 var numbersPc = [];
 while (numbersPc.length !== 16){
   var numRndPc = getRandomNumber(1, 100);
-  if(! inArray(numbersPc, numRndPc)){
-    numbersPc.push(numRndPc);
-  }
-
-  // if(numbersPc.includes(numRndPc) == false){
+  // if(! inArray(numbersPc, numRndPc)){
   //   numbersPc.push(numRndPc);
   // }
+
+  if(numbersPc.includes(numRndPc) == false){
+    numbersPc.push(numRndPc);
+  }
 }
 console.log(numbersPc, numbersPc.length);
 
 //// FUNZIONE: verifica se un numero è presente in array
-function inArray(array, number){
-  var i = 0;
-  while(i < array.length){
-    if(number === array[i]){
-      return true;
-    }
-    i++;
-  }
-}
+// function inArray(array, number){
+//   var i = 0;
+//   while(i < array.length){
+//     if(number === array[i]){
+//       return true;
+//     }
+//     i++;
+//   }
+// }
 
 // 3. in seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
 // 4. L’utente non può inserire più volte lo stesso numero.
@@ -40,19 +40,35 @@ var possibilita = 100-16;
 
 for(var i = 0; i < possibilita; i++){
   var userNumber = Number(prompt("insert a number from 1 to 100"));
-  if(userNumber > max){
+  if(userNumber > 100){
     alert("Game Over, hai inserito un numero non valido! Premi OK e riavvia il gioco");
     break;
-  }
-  while(inArray(numbersUser,userNumber)){
+  } //numero > max
+
+  if(numbersUser.includes(userNumber) == true){
     alert("Hai già usato questo numero! Non puoi usare lo stesso numero più volte. Premi OK e riprova");
     userNumber = Number(prompt("insert a number from 1 to 100"));
   }
-  if(inArray(numbersPc, userNumber)){
+
+  if(numbersPc.includes(userNumber)){
     console.log("Bomba Game Over");
     alert("Game Over, il tuo punteggio è: " + numbersUser.length );
-    break;
+    break; //bomba
   }
+
+  // if(userNumber > 100){
+  //   alert("Game Over, hai inserito un numero non valido! Premi OK e riavvia il gioco");
+  //   break;
+  // }
+  // while(inArray(numbersUser,userNumber)){
+  //   alert("Hai già usato questo numero! Non puoi usare lo stesso numero più volte. Premi OK e riprova");
+  //   userNumber = Number(prompt("insert a number from 1 to 100"));
+  // }
+  // if(inArray(numbersPc, userNumber)){
+  //   console.log("Bomba Game Over");
+  //   alert("Game Over, il tuo punteggio è: " + numbersUser.length );
+  //   break;
+  // }
   numbersUser.push(userNumber);
 }
 console.log(userNumber, numbersUser);
