@@ -16,12 +16,12 @@ switch (difficulty){
   case 1:
     min = 1;
     max = 80;
-    alert("Hai scelto il livello Middle, numeri tra 1 e 80")
+    alert("Hai scelto il livello Middle, numeri tra 1 e 80");
     break;
   case 2:
     min = 1;
     max = 50;
-    alert("Hai scelto il livello Hard, numeri tra 1 e 50")
+    alert("Hai scelto il livello Hard, numeri tra 1 e 50");
     break;
   default:
     alert("Non hai scelto correttamente un livello! Riprova.");
@@ -54,6 +54,7 @@ var possibilita = max - 16;
 
 for(var i = 0; i < possibilita; i++){
   var userNumber = Number(prompt("insert a number from 1 to " + max));
+
   while(userNumber > max ||userNumber < 0 || userNumber === 0 || isNaN(userNumber)){
     alert("Hai inserito un numero non valido! Premi OK e riprova");
     userNumber = Number(prompt("insert a number from 1 to " + max));
@@ -64,7 +65,7 @@ for(var i = 0; i < possibilita; i++){
   }
   if(numbersPc.includes(userNumber)){
     console.log("Bomba Game Over");
-    alert("Game Over, il tuo punteggio è: " + numbersUser.length );
+    alert("Game Over, il tuo punteggio è: " + numbersUser.length);
     break; //bomba
   }
   numbersUser.push(userNumber);
