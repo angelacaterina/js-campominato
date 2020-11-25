@@ -7,7 +7,7 @@ console.log(difficulty);
 // 4. con difficoltà 2 => tra 1 e 50
 var min, max;
 
-switch (difficulty) {
+switch (difficulty){
   case 0:
     min = 1;
     max = 100;
@@ -24,58 +24,49 @@ switch (difficulty) {
     alert("Hai scelto il livello Hard, numeri tra 1 e 50")
     break;
   default:
-    alert("Non ho capito! Riprova.");
+    alert("Non hai scelto correttamente un livello! Riprova.");
     break;
 }
 console.log(min,max);
 
-
 //// FUNZIONE: generatore di numeri casuali
+/** Generatore di numeri casuali
+* @param min int - inserimento di un numero di minino
+* @param max int - inserimento di un numero di massimo
+* @return int - mi ritorna un numero intero random tra un min e un max
+*/
 function getRandomNumber(min, max){
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
-// console.log(getRandomNumber(1, 100));
-
 
 var numbersPc = [];
 while (numbersPc.length !== 16){
   var numRndPc = getRandomNumber(min, max);
-  if(! inArray(numbersPc, numRndPc)){
+
+  if(numbersPc.includes(numRndPc) == false){
     numbersPc.push(numRndPc);
   }
 }
 console.log(numbersPc, numbersPc.length);
-
-//// FUNZIONE: verifica se un numero è presente in array
-function inArray(array, number){
-  var i = 0;
-  while(i < array.length){
-    if(number === array[i]){
-      return true;
-    }
-    i++;
-  }
-}
 
 var numbersUser = [];
 var possibilita = max - 16;
 
 for(var i = 0; i < possibilita; i++){
   var userNumber = Number(prompt("insert a number from 1 to " + max));
-  if(userNumber > max || userNumber === 0){
-    alert("Game Over, hai inserito un numero non valido! Premi OK e riavvia il gioco");
-    break;
-  }
-  while(inArray(numbersUser,userNumber)){
+  while(userNumber > max ||userNumber < 0 || userNumber === 0 || isNaN(userNumber)){
+    alert("Hai inserito un numero non valido! Premi OK e riprova");
+    userNumber = Number(prompt("insert a number from 1 to " + max));
+  } //valori non consentiti
+  while(numbersUser.includes(userNumber) == true){
     alert("Hai già usato questo numero! Non puoi usare lo stesso numero più volte. Premi OK e riprova");
     userNumber = Number(prompt("insert a number from 1 to " + max));
   }
-  if(inArray(numbersPc, userNumber)){
+  if(numbersPc.includes(userNumber)){
     console.log("Bomba Game Over");
     alert("Game Over, il tuo punteggio è: " + numbersUser.length );
-    break;
+    break; //bomba
   }
-
   numbersUser.push(userNumber);
   console.log(userNumber);
 }
