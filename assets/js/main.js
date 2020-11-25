@@ -12,7 +12,7 @@ while (numbersPc.length !== 16){
   var numRndPc = getRandomNumber(1, 100);
   // if(! inArray(numbersPc, numRndPc)){
   //   numbersPc.push(numRndPc);
-  // }
+  // } ////utilizza funzione
 
   if(numbersPc.includes(numRndPc) == false){
     numbersPc.push(numRndPc);
@@ -40,7 +40,7 @@ var possibilita = 100-16;
 
 for(var i = 0; i < possibilita; i++){
   var userNumber = Number(prompt("insert a number from 1 to 100"));
-  if(userNumber > 100){
+  if(userNumber > 100 || userNumber === 0){
     alert("Game Over, hai inserito un numero non valido! Premi OK e riavvia il gioco");
     break;
   } //numero > max
@@ -56,7 +56,8 @@ for(var i = 0; i < possibilita; i++){
     break; //bomba
   }
 
-  // if(userNumber > 100){
+  ////utilizza funzione
+  // if(userNumber > 100 || userNumber === 0){
   //   alert("Game Over, hai inserito un numero non valido! Premi OK e riavvia il gioco");
   //   break;
   // }
